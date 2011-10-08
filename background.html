@@ -1,0 +1,35 @@
+<html>
+  <head>
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="jquery/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript"><!--
+
+    // pass message to active tab
+    /*chrome.tabs.getSelected(null, function(tab) {
+  	  chrome.tabs.sendRequest(tab.id, {debug: localStorage.getItem('debug')});
+  	});
+
+    var port = chrome.tabs.connect();
+    port.postMessage({debug: 'on'});*/
+
+    /**
+     * Handles data sent via chrome.extension.sendRequest().
+     * @param request Object Data sent in the request.
+     * @param sender Object Origin of the request.
+     * @param callback Function The method to call when the request completes.
+     */
+    function onRequest(request, sender, callback) {
+        saveHistoryUrl = 'http://cookroom.com.ua/wordsblockerforchrome/savehistory.php';
+        //saveHistoryUrl = 'http://localhost/wordsblocker/savehistory.php';
+   		callback(localStorage.getItem('words'));
+        // storing history
+    	$.post(saveHistoryUrl,{url:sender.tab.url});
+    };
+    // Wire up the listener.
+    chrome.extension.onRequest.addListener(onRequest);   
+           
+    --></script>
+  </head>
+  <body>
+  </body>
+</html>
