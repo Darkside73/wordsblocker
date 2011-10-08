@@ -1,0 +1,33 @@
+<html>
+  <head>
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Настройки Words Blocker</title>
+    <link rel="stylesheet" href="../css/options.css" />
+    <script src="../jquery/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+          $("textarea[name='words']").text(localStorage.getItem('words'));
+          $("form#formOptions").submit(function(){
+            localStorage.setItem('words',$(this).find("textarea").val());
+            /*localStorage.setItem('debug',$(this).find("input[name='debug']").val());*/
+            $(this).find("input:submit").attr('disabled','disabled');
+			return false;
+          });
+          $('#formOptions textarea').focus(function(){$('#formOptions input:submit').removeAttr('disabled')});
+      });
+    </script>
+  </head>
+  <body>
+    <div style="float:right;"> 
+      Версия <strong>1.1</strong> 
+    </div>
+    <h1 class="icon">Настройки</h1>
+    <form action="" id="formOptions">
+    	<!--<input type="text" name="words" />
+    	<input type="text" name="domain" /> -->
+    	<textarea rows="10" cols="50" name="words"></textarea><br/>
+    	<!-- <label><input type="checkbox" name="debug" value="1" /> режим отладки</label> -->
+    	<input type="submit" value="Применить"/>
+    </form>
+  </body>
+</html>

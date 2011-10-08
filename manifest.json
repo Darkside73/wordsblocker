@@ -1,0 +1,25 @@
+{
+   "background_page": "background.html",
+   "browser_action": {
+      "default_icon": "img/icon16x16.png",
+      "default_title": "Block parts of site by keywords list"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "jquery/jquery-1.4.2.min.js", "js/filter.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_start"
+   } ],
+   "description": "Block parts of site by keywords list",
+   "icons": {
+      "128": "img/icon128x128.png",
+      "16": "img/icon16x16.png",
+      "48": "img/icon48x48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDUffHGRK3Xdeb8J3lrZ5enFYfNrrrc1XPPExhglWBcnt7mA7ZMJWw0wSzGnpHHil5FRnxWlUxz3MIaPEC79sG+MWJMqO7CbjIe1qQyx74H8h5yQ3rydCNmqb7d0uMmVgc7TGkDqPHg07hcHRyix5udeAYpV3htlxiCpLhFxiEXzwIDAQAB",
+   "name": "Words Blocker",
+   "options_page": "options/index.html",
+   "permissions": [ "tabs", "http://*/*", "https://*/*" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "1.1.7"
+}

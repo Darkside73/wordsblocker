@@ -1,0 +1,7 @@
+body { 
+  font: 14px arial;
+  overflow-y: scroll;
+}
+
+h1.icon { background: url("../img/icon48x48.png") no-repeat left center; padding: 12px 0 0 50px; height:48px; };
+      
