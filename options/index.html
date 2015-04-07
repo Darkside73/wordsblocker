@@ -1,7 +1,7 @@
 <html>
   <head>
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Настройки Words Blocker</title>
+    <title>Words Blocker Options</title>
     <link rel="stylesheet" href="../css/options.css" />
     <script src="../jquery/jquery-1.4.2.min.js"></script>
     <script type="text/javascript">
@@ -9,25 +9,26 @@
           $("textarea[name='words']").text(localStorage.getItem('words'));
           $("form#formOptions").submit(function(){
             localStorage.setItem('words',$(this).find("textarea").val());
-            /*localStorage.setItem('debug',$(this).find("input[name='debug']").val());*/
             $(this).find("input:submit").attr('disabled','disabled');
-			return false;
+      			return false;
           });
           $('#formOptions textarea').focus(function(){$('#formOptions input:submit').removeAttr('disabled')});
       });
     </script>
   </head>
   <body>
-    <div style="float:right;"> 
-      Версия <strong>1.1</strong> 
+    <div style="float:right;">
+      Version <strong>1.1.7</strong>
     </div>
-    <h1 class="icon">Настройки</h1>
+    <h1 class="icon">Specify comma separated stop words</h1>
+    <p>e.g. car* crash*, disaster*<br>
+    (you can use asteriks to block word forms as well)</p>
     <form action="" id="formOptions">
     	<!--<input type="text" name="words" />
     	<input type="text" name="domain" /> -->
     	<textarea rows="10" cols="50" name="words"></textarea><br/>
     	<!-- <label><input type="checkbox" name="debug" value="1" /> режим отладки</label> -->
-    	<input type="submit" value="Применить"/>
+    	<input type="submit" value="Apply"/>
     </form>
   </body>
 </html>

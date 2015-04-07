@@ -10,11 +10,9 @@ $.fn.tagName = function() {
 };
 
 $(document).ready(function(){
-	
-	console.log('ready');
-	
+
 	function onFind(words) {
-		
+
 		var findWords = function(textNode,regObjects) {
 			// get text from text node
 			text = textNode.text();
@@ -33,9 +31,9 @@ $(document).ready(function(){
 					// breaking
 					return false;
 				}
-			};		
+			};
 		};
-		
+
 		var loopDom = function(node,regObjects) {
 			// skip some elements
 			if (node.tagName()=='SCRIPT' || node.tagName()=='IFRAME' || node.tagName()=='NOSCRIPT') {
@@ -48,12 +46,12 @@ $(document).ready(function(){
 				})
 				.each(function(index){
 					findWords($(this),regObjects);
-				});		
-			node.children().each(function(index){				
+				});
+			node.children().each(function(index){
 				loopDom($(this),regObjects);
-			});		
+			});
 		};
-		
+
 //		console.log(words);
 		if (words) {
 			// create array of RegExp objects
@@ -72,9 +70,9 @@ $(document).ready(function(){
 			// walk throw DOM elements
 			loopDom($("body"),regObjects);
 		}
-		
+
 	}
-	
+
 	chrome.extension.sendRequest({}, onFind);
-	
+
 });
