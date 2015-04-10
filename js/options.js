@@ -1,4 +1,6 @@
 $(function() {
+  var manifest = chrome.runtime.getManifest();
+  $("#version>strong").text(manifest.version);
   chrome.storage.sync.get("words", function (data) {
     $("textarea[name='words']").text(data.words);
     $("form#formOptions").submit(function() {
